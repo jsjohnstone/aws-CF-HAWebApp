@@ -236,8 +236,8 @@ Resources:
                     apt-get install apache2 -y
                     systemctl start apache2.service
                     cd /var/www/html
-                    aws s3 cp s3://playground-iacproject/udacity.zip .
-                    unzip -o udacity.zip
+                    aws s3 cp s3://playground-iacproject/website_cf_test.zip .
+                    unzip -o website_cf_test.zip
                     instanceId=$(curl http://169.254.169.254/latest/meta-data/instance-id)
                     region=$(curl http://169.254.169.254/latest/dynamic/instance-identity/document | grep region | awk -F\" '{print $4}')
                     echo "<br>Served by: <i>$instanceId ($region)</i>" >> index.html
@@ -285,7 +285,7 @@ Resources:
         Properties: 
             InstanceType: t1.micro
             ImageId: ami-0d1cd67c26f5fca19 # ubuntu-bionic-18.04
-            KeyName: jamie_udacity
+            KeyName: cfdemo
             NetworkInterfaces: 
             - AssociatePublicIpAddress: true
               DeviceIndex: 0
